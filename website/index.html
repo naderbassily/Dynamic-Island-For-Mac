@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dynamic Island for Mac — music, meetings & messages in one pill</title>
+  <meta name="description" content="A free Dynamic Island for every Mac. Now Playing, Teams meetings, messages, charging, file shelf, timers and more — wrapped around your MacBook notch or floating in your Mac mini's menu bar.">
+  <link rel="canonical" href="https://dynamicislandmac.com/">
+  <meta name="theme-color" content="#070d1c">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://dynamicislandmac.com/">
+  <meta property="og:title" content="Dynamic Island for Mac">
+  <meta property="og:description" content="Music, meetings, messages, battery, files and timers in one beautiful pill. Free for every Mac.">
+  <meta property="og:image" content="https://dynamicislandmac.com/assets/og.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Dynamic Island for Mac">
+  <meta name="twitter:description" content="Music, meetings, messages, battery, files and timers in one beautiful pill.">
+  <meta name="twitter:image" content="https://dynamicislandmac.com/assets/og.jpg">
+
+  <link rel="icon" type="image/png" href="/assets/favicon.png">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+  <link rel="stylesheet" href="/styles.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Dynamic Island for Mac",
+    "operatingSystem": "macOS 14 or later",
+    "applicationCategory": "UtilitiesApplication",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "url": "https://dynamicislandmac.com/",
+    "image": "https://dynamicislandmac.com/assets/icon.png"
+  }
+  </script>
+</head>
+<body>
+  <div class="bg-orbs" aria-hidden="true"><span></span><span></span><span></span></div>
+
+  <!-- NAV -->
+  <header class="nav" id="top">
+    <a class="brand" href="#top"><img src="/assets/icon.png" alt="" width="30" height="30"> Dynamic Island</a>
+    <nav class="nav-links">
+      <a href="#features">Features</a>
+      <a href="#everymac">Every Mac</a>
+      <a href="#integrations">Integrations</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="btn btn-small" href="#download">Download</a>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-copy reveal">
+        <span class="chip"><span class="dot"></span> Free · <span data-version>v2.1.0</span> · macOS 14+</span>
+        <h1>The <span class="grad">Dynamic Island</span><br>your Mac was missing.</h1>
+        <p class="lead">Music, meetings, messages, charging, files and timers — living in one beautiful pill at the top of your screen. Wraps around your MacBook notch. Floats in your Mac mini’s menu bar.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" data-download href="#download">
+            <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M16.4 12.6c0-2.6 2.1-3.8 2.2-3.9-1.2-1.8-3.1-2-3.7-2-1.6-.2-3.1.9-3.9.9-.8 0-2-.9-3.4-.9-1.7 0-3.3 1-4.2 2.6-1.8 3.1-.5 7.7 1.3 10.2.9 1.2 1.9 2.6 3.2 2.6 1.3-.1 1.8-.8 3.3-.8 1.6 0 2 .8 3.4.8 1.4 0 2.3-1.3 3.1-2.5 1-1.4 1.4-2.8 1.4-2.9-.1 0-2.7-1-2.7-4.1zM13.9 5c.7-.9 1.2-2 1-3.2-1 .1-2.3.7-3 1.6-.7.8-1.2 2-1.1 3.1 1.2.1 2.3-.6 3.1-1.5z"/></svg>
+            Download for Mac
+          </a>
+          <a class="btn btn-ghost" href="#features">See what it does →</a>
+        </div>
+        <p class="fine">Universal app · Apple silicon &amp; Intel · No account, no tracking</p>
+      </div>
+
+      <!-- Animated Mac screen -->
+      <div class="screen reveal" aria-label="Animated preview of Dynamic Island">
+        <div class="menubar">
+          <span class="apple"></span><b>Finder</b><span>File</span><span>Edit</span><span>View</span>
+          <span class="mb-right"><span class="mb-clock">Mon 9:41 AM</span></span>
+        </div>
+
+        <div class="island" id="island" data-state="idle">
+          <!-- idle -->
+          <div class="st st-idle"><span class="t-clock">9:41 AM</span><span class="sun">☀︎</span><span>72°</span></div>
+          <!-- music -->
+          <div class="st st-music">
+            <span class="art"></span><span class="ttl">Midnight Drive</span>
+            <span class="wave"><i></i><i></i><i></i><i></i><i></i></span>
+          </div>
+          <!-- charging -->
+          <div class="st st-charge">
+            <span class="ic ic-green">⚡︎</span>
+            <span class="txt"><small>CHARGING</small><b>84%</b><em>Full in 35m · 96W</em><span class="bar"><span></span></span></span>
+          </div>
+          <!-- meeting -->
+          <div class="st st-meet">
+            <span class="ic ic-indigo">▶︎</span>
+            <span class="txt"><small>IN 2 MIN</small><b>Weekly marketing sync</b><em>10:00 – 10:30 AM · Teams</em></span>
+            <span class="join">Join</span>
+          </div>
+          <!-- message -->
+          <div class="st st-msg">
+            <span class="ic ic-blue">✉︎</span>
+            <span class="txt"><small>MAIL</small><b>Sarah Chen</b><em>Q4 launch plan — final draft attached</em></span>
+          </div>
+          <!-- timer -->
+          <div class="st st-timer"><span class="tm-ic">◔</span><span>Focus</span><span class="tm" id="tm">24:59</span></div>
+          <!-- airpods -->
+          <div class="st st-pods"><span class="ic ic-sky">◖◗</span><span class="txt one"><b>AirPods Pro</b><em>Connected</em></span></div>
+        </div>
+
+        <div class="desktop-icons" aria-hidden="true"><span></span><span></span><span></span></div>
+        <div class="state-dots" id="stateDots" aria-hidden="true"></div>
+      </div>
+    </section>
+
+    <!-- LOGO STRIP -->
+    <section class="works-with reveal">
+      <p>Works with the apps you already use</p>
+      <div class="marquee"><div class="track">
+        <span>Apple Music</span><span>Spotify</span><span>YouTube</span><span>Microsoft Teams</span><span>Outlook</span><span>Zoom</span><span>Google Meet</span><span>WhatsApp</span><span>Slack</span><span>Messages</span><span>Mail</span><span>Shortcuts</span><span>AirPods</span><span>Home Assistant</span>
+        <span>Apple Music</span><span>Spotify</span><span>YouTube</span><span>Microsoft Teams</span><span>Outlook</span><span>Zoom</span><span>Google Meet</span><span>WhatsApp</span><span>Slack</span><span>Messages</span><span>Mail</span><span>Shortcuts</span><span>AirPods</span><span>Home Assistant</span>
+      </div></div>
+    </section>
+
+    <!-- FEATURES -->
+    <section class="section" id="features">
+      <div class="section-head reveal">
+        <span class="eyebrow">Features</span>
+        <h2>Everything you glance at,<br><span class="grad">in one place.</span></h2>
+        <p>Hover to open. Move away to close. It stays out of your way until something matters.</p>
+      </div>
+
+      <div class="grid">
+        <article class="card big reveal">
+          <div class="card-ic" style="--c:#ff375f">♪</div>
+          <h3>Now Playing</h3>
+          <p>Apple Music, Spotify and YouTube in Chrome, Edge, Brave or Safari. Artwork, live waveform, play / pause / skip.</p>
+          <div class="mini-pill music"><span class="art"></span><span>Midnight Drive</span><span class="wave"><i></i><i></i><i></i><i></i></span></div>
+        </article>
+        <article class="card big reveal">
+          <div class="card-ic" style="--c:#5b5fc7">▶︎</div>
+          <h3>Meetings, one click away</h3>
+          <p>Countdown to your next meeting, a pop-up a minute before, and a <b>Join</b> button for Teams, Zoom, Meet and Webex.</p>
+          <div class="mini-pill meet"><span>Weekly sync</span><span class="count">in 2m</span><span class="join">Join Teams</span></div>
+        </article>
+        <article class="card reveal"><div class="card-ic" style="--c:#0a84ff">✉︎</div><h3>Messages &amp; email</h3><p>Banners for Teams, Outlook, WhatsApp, Slack, Messages. Apple Mail shows sender and subject.</p></article>
+        <article class="card reveal"><div class="card-ic" style="--c:#34c759">⚡︎</div><h3>Charging</h3><p>Plug-in banner with %, time to full and watts. Low-battery and fully-charged alerts on MacBook.</p></article>
+        <article class="card reveal"><div class="card-ic" style="--c:#ff9f0a">⇣</div><h3>File shelf &amp; AirDrop</h3><p>Drag files onto the island, grab them later or AirDrop them. Clipboard history included.</p></article>
+        <article class="card reveal"><div class="card-ic" style="--c:#ff453a">◔</div><h3>Timer &amp; Pomodoro</h3><p>Quick timers and focus / break cycles with a live countdown right in the pill.</p></article>
+        <article class="card reveal"><div class="card-ic" style="--c:#64d2ff">◖◗</div><h3>AirPods &amp; devices</h3><p>Connect / disconnect banners and battery levels for keyboards, mice and trackpads.</p></article>
+        <article class="card reveal"><div class="card-ic" style="--c:#bf5af2">⌕</div><h3>Spotlight-style search</h3><p>Press <kbd>⌥</kbd> <kbd>Space</kbd> for apps, files, Google and YouTube.</p></article>
+        <article class="card reveal"><div class="card-ic" style="--c:#30d158">▤</div><h3>System at a glance</h3><p>CPU, memory, disk, network speed, battery and uptime — plus weather and clock when idle.</p></article>
+        <article class="card reveal"><div class="card-ic" style="--c:#ffd60a">◎</div><h3>Little HUDs</h3><p>Volume, Caps Lock, a mic-in-use dot, finished downloads, Low Power Mode.</p></article>
+        <article class="card big reveal"><div class="card-ic" style="--c:#ff9f0a">⌘</div><h3>Shortcuts</h3><p>Run your Apple Shortcuts in one click, and pin your favourites.</p></article>
+        <article class="card big reveal"><div class="card-ic" style="--c:#8e8e93">⚙︎</div><h3>Make it yours</h3><p>Floating pill or edge style, three sizes, every feature switchable. Hides in full-screen apps.</p></article>
+      </div>
+    </section>
+
+    <!-- EVERY MAC -->
+    <section class="section" id="everymac">
+      <div class="section-head reveal">
+        <span class="eyebrow">Every Mac</span>
+        <h2>Notch or no notch,<br><span class="grad">it just fits.</span></h2>
+      </div>
+      <div class="devices">
+        <figure class="device reveal">
+          <div class="laptop">
+            <div class="lid"><div class="notch-wrap"><span class="l"><span class="art"></span></span><span class="notch"></span><span class="r"><span class="wave"><i></i><i></i><i></i><i></i></span></span></div></div>
+            <div class="base"></div>
+          </div>
+          <figcaption><b>MacBook</b> — wraps around the camera notch and keeps content on either side.</figcaption>
+        </figure>
+        <figure class="device reveal">
+          <div class="monitor">
+            <div class="panel"><div class="mbar"></div><div class="float-pill"><span>9:41 AM</span><span>☀︎ 72°</span></div></div>
+            <div class="stand"></div><div class="mini"></div>
+          </div>
+          <figcaption><b>Mac mini, iMac, Studio &amp; external displays</b> — a floating pill, centred in the menu bar.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- INTEGRATIONS -->
+    <section class="section" id="integrations">
+      <div class="split">
+        <div class="reveal">
+          <span class="eyebrow">For tinkerers</span>
+          <h2>Make the island<br><span class="grad">talk to anything.</span></h2>
+          <p class="muted">A URL scheme, a local web API and a tiny CLI. Ping yourself when a build finishes, an AI agent is done, the washing machine stops, or the doorbell rings.</p>
+          <ul class="ticks">
+            <li>Apple Shortcuts, Raycast, Alfred, Keyboard Maestro</li>
+            <li>Home Assistant, cron, launchd, shell scripts</li>
+            <li>Claude Code, Codex, Cursor hooks</li>
+            <li>Progress bars, custom icons &amp; colours</li>
+          </ul>
+        </div>
+        <div class="terminal reveal" aria-label="Integration examples">
+          <div class="term-bar"><i></i><i></i><i></i><span>Terminal</span></div>
+          <pre id="typed"></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- DOWNLOAD -->
+    <section class="section download" id="download">
+      <div class="dl-card reveal">
+        <img class="dl-icon" src="/assets/icon.png" alt="Dynamic Island app icon" width="140" height="140">
+        <h2>Get Dynamic Island</h2>
+        <p class="muted">Free. <span data-version>v2.1.0</span> · macOS 14 Sonoma or later · Apple silicon &amp; Intel</p>
+        <a class="btn btn-primary btn-xl" data-download href="#">
+          <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M12 3v11.2l3.6-3.6 1.4 1.4-6 6-6-6 1.4-1.4 3.6 3.6V3h2zM5 19h14v2H5z"/></svg>
+          Download .dmg
+        </a>
+        <p class="fine"><a data-release-notes href="#" target="_blank" rel="noopener">Release notes</a> · <a data-source href="#" target="_blank" rel="noopener">Source on GitHub</a></p>
+
+        <div class="steps">
+          <div class="step"><span>1</span><p>Open the <b>.dmg</b> and drag <b>Dynamic Island</b> into <b>Applications</b>.</p></div>
+          <div class="step"><span>2</span><p>First launch: <b>right-click ▸ Open ▸ Open</b>. On macOS 15+, use <b>Privacy &amp; Security ▸ Open Anyway</b>.</p></div>
+          <div class="step"><span>3</span><p>Allow the permissions for the features you want. That’s it — hover the pill.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section" id="faq">
+      <div class="section-head reveal">
+        <span class="eyebrow">FAQ</span>
+        <h2>Questions, answered.</h2>
+      </div>
+      <div class="faq">
+        <details class="reveal"><summary>Is it really free?</summary><p>Yes. No subscription, no account, no ads.</p></details>
+        <details class="reveal"><summary>Why does macOS warn me the first time I open it?</summary><p>The app isn’t notarized by Apple yet (that needs a paid developer account). Right-click the app ▸ Open ▸ Open once, or click <b>Open Anyway</b> in System Settings ▸ Privacy &amp; Security. After that it opens normally.</p></details>
+        <details class="reveal"><summary>Is it safe? What data does it collect?</summary><p>Nothing leaves your Mac except album artwork and the weather (sent with your approximate location to Open-Meteo). There’s no analytics or tracking, and the source code is open for anyone to read.</p></details>
+        <details class="reveal"><summary>Which Macs does it work on?</summary><p>Any Mac on macOS 14 Sonoma or later — MacBook Air &amp; Pro (with or without a notch), Mac mini, iMac, Mac Studio, Mac Pro, and external displays. Apple silicon and Intel.</p></details>
+        <details class="reveal"><summary>How do my Teams meetings show up?</summary><p>The island reads macOS Calendar. Add your work account in <b>System Settings ▸ Internet Accounts ▸ Microsoft Exchange</b> and turn on Calendars — then every Teams link gets a Join button.</p></details>
+        <details class="reveal"><summary>Can it show the text of my Teams or WhatsApp messages?</summary><p>macOS doesn’t let apps read other apps’ notifications, so the island shows <i>how many</i> new messages arrived (from the Dock badges). Apple Mail is the exception — you’ll see sender and subject.</p></details>
+        <details class="reveal"><summary>YouTube shows the title but won’t pause.</summary><p>In Chrome, Edge or Brave turn on <b>View ▸ Developer ▸ Allow JavaScript from Apple Events</b>. In Safari: Develop ▸ Allow JavaScript from Apple Events.</p></details>
+        <details class="reveal"><summary>How do I uninstall it?</summary><p>Click the capsule icon in the menu bar ▸ Quit, then drag the app from Applications to the Trash.</p></details>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section" id="contact">
+      <div class="split contact">
+        <div class="reveal">
+          <span class="eyebrow">Contact</span>
+          <h2>Something not right?<br><span class="grad">Tell me.</span></h2>
+          <p class="muted">Bug, install trouble or a feature idea — send a message and I’ll get back to you. Including your macOS version and Mac model helps a lot.</p>
+          <p class="muted small">Tip: the version is in the menu bar capsule ▸ top line.</p>
+        </div>
+        <form class="form reveal" id="contactForm" novalidate>
+          <div class="row">
+            <label>Name<input name="name" autocomplete="name" required maxlength="100"></label>
+            <label>Email<input name="email" type="email" autocomplete="email" required maxlength="200"></label>
+          </div>
+          <div class="row">
+            <label>Topic
+              <select name="topic">
+                <option>Bug report</option>
+                <option>Installation help</option>
+                <option>Feature idea</option>
+                <option>Other</option>
+              </select>
+            </label>
+            <label>Mac &amp; macOS<input name="system" placeholder="Optional, e.g. MacBook Pro · macOS 15" maxlength="120"></label>
+          </div>
+          <label>Message<textarea name="message" rows="5" required maxlength="5000" placeholder="What happened? What did you expect?"></textarea></label>
+          <label class="hp" aria-hidden="true">Website<input name="website" tabindex="-1" autocomplete="off"></label>
+          <button class="btn btn-primary" type="submit"><span class="label">Send message</span><span class="spinner" aria-hidden="true"></span></button>
+          <p class="form-status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="foot-row">
+      <a class="brand" href="#top"><img src="/assets/icon.png" alt="" width="24" height="24"> Dynamic Island for Mac</a>
+      <nav><a href="#download">Download</a><a data-source href="#" target="_blank" rel="noopener">GitHub</a><a href="#faq">FAQ</a><a href="#contact">Contact</a></nav>
+    </div>
+    <p class="legal">© <span id="year">2026</span> Nader Bassily · Free &amp; open source (MIT). Not affiliated with Apple Inc. Mac, MacBook and AirPods are trademarks of Apple Inc.</p>
+  </footer>
+
+  <script src="/script.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://dynamicislandmac.com/sitemap.xml

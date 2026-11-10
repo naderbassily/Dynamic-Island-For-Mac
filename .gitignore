@@ -1,0 +1,14 @@
+.DS_Store
+.build/
+build/
+.swiftpm/
+*.xcodeproj/
+xcuserdata/
+DerivedData/
+*.zip
+build-log.txt
+Dynamic Island.dmg
+Dynamic Island.zip
+website/.vercel/
+website/node_modules/
+.env*

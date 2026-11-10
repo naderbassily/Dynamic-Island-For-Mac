@@ -1,0 +1,44 @@
+#!/bin/bash
+# island — talk to Dynamic Island from Terminal, scripts, cron or AI agents.
+#
+#   island notify "Build finished" "All 212 tests passed" [icon] [hex-colour]
+#   island timer 10            # minutes
+#   island timer cancel|pause|pomodoro
+#   island open calendar       # media calendar inbox shelf timer system shortcuts search
+#   island search "quarterly report"
+#   island shelf ~/Desktop/report.pdf
+#   island shortcut "Morning Routine"
+#   island media toggle|next|previous
+#
+# Install:  cp scripts/island /usr/local/bin/ && chmod +x /usr/local/bin/island
+set -euo pipefail
+
+urlencode() {
+  local LC_ALL=C s="$1" out="" c i
+  for (( i=0; i<${#s}; i++ )); do
+    c="${s:i:1}"
+    case "$c" in
+      [a-zA-Z0-9.~_-]) out+="$c" ;;
+      *) out+=$(printf '%%%02X' "'$c") ;;
+    esac
+  done
+  printf '%s' "$out"
+}
+
+send() { open -g "dynamicisland://$1"; }
+
+cmd="${1:-help}"; shift || true
+case "$cmd" in
+  notify)
+    title="${1:-Notification}"; body="${2:-}"; icon="${3:-bell.fill}"; color="${4:-0a84ff}"
+    send "notify?title=$(urlencode "$title")&body=$(urlencode "$body")&icon=$(urlencode "$icon")&color=$(urlencode "$color")" ;;
+  timer)
+    arg="${1:-5}"
+    if [[ "$arg" =~ ^[0-9.]+$ ]]; then send "timer?minutes=$arg"; else send "timer?action=$arg"; fi ;;
+  open)     send "open?tab=$(urlencode "${1:-}")" ;;
+  search)   send "search?q=$(urlencode "${*:-}")" ;;
+  shelf)    for f in "$@"; do send "shelf?path=$(urlencode "$(cd "$(dirname "$f")" && pwd)/$(basename "$f")")"; done ;;
+  shortcut) send "shortcut?name=$(urlencode "${1:?shortcut name}")" ;;
+  media)    send "media?action=$(urlencode "${1:-toggle}")" ;;
+  *) sed -n '2,14p' "$0" ;;
+esac

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>CFBundleName</key>
+    <string>Dynamic Island</string>
+    <key>CFBundleDisplayName</key>
+    <string>Dynamic Island</string>
+    <key>CFBundleIdentifier</key>
+    <string>com.nader.dynamicisland</string>
+    <key>CFBundleExecutable</key>
+    <string>DynamicIsland</string>
+    <key>CFBundleIconFile</key>
+    <string>AppIcon</string>
+    <key>CFBundlePackageType</key>
+    <string>APPL</string>
+    <key>CFBundleShortVersionString</key>
+    <string>2.1.0</string>
+    <key>CFBundleVersion</key>
+    <string>1</string>
+    <key>LSMinimumSystemVersion</key>
+    <string>14.0</string>
+    <key>LSUIElement</key>
+    <true/>
+    <key>NSHighResolutionCapable</key>
+    <true/>
+    <key>NSAppleEventsUsageDescription</key>
+    <string>Dynamic Island reads what is playing in Music, Spotify and YouTube (in your browser) so it can show it and control playback.</string>
+    <key>NSCalendarsFullAccessUsageDescription</key>
+    <string>Dynamic Island shows your upcoming events and Teams meetings with a one-click Join button.</string>
+    <key>NSBluetoothAlwaysUsageDescription</key>
+    <string>Dynamic Island shows a banner when AirPods, headphones or keyboards connect, and their battery level.</string>
+    <key>NSDownloadsFolderUsageDescription</key>
+    <string>Dynamic Island tells you when a download finishes and lets you drag it from the shelf.</string>
+    <key>NSLocationUsageDescription</key>
+    <string>Dynamic Island uses your approximate location to show the local weather.</string>
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>Dynamic Island uses your approximate location to show the local weather.</string>
+    <key>CFBundleURLTypes</key>
+    <array>
+        <dict>
+            <key>CFBundleURLName</key>
+            <string>com.nader.dynamicisland</string>
+            <key>CFBundleURLSchemes</key>
+            <array>
+                <string>dynamicisland</string>
+            </array>
+        </dict>
+    </array>
+    <key>NSCalendarsUsageDescription</key>
+    <string>Dynamic Island shows your upcoming events and Teams meetings with a one-click Join button.</string>
+</dict>
+</plist>

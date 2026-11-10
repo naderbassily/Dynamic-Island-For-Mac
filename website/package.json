@@ -1,0 +1,8 @@
+{
+  "name": "dynamicislandmac-site",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Landing page for Dynamic Island for Mac (dynamicislandmac.com)",
+  "engines": { "node": ">=18" }
+}

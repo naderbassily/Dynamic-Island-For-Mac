@@ -1,0 +1,84 @@
+name: Release
+
+# Publish a release either from the GitHub website:
+#   Actions ▸ Release ▸ Run workflow ▸ enter a version (e.g. 2.1.0)
+# or by pushing a tag:  git tag v2.1.0 && git push --tags
+on:
+  push:
+    tags: ['v*']
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version to release (for example 2.1.0)'
+        required: true
+        default: '2.1.0'
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Work out version
+        id: v
+        run: |
+          if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
+            VERSION="${{ github.event.inputs.version }}"
+          else
+            VERSION="${GITHUB_REF_NAME#v}"
+          fi
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+          /usr/libexec/PlistBuddy -c "Set :CFBundleShortVersionString $VERSION" Resources/Info.plist
+          /usr/libexec/PlistBuddy -c "Set :CFBundleVersion ${{ github.run_number }}" Resources/Info.plist
+
+      - name: Build universal app, .dmg and .zip
+        run: |
+          ./build.sh --share
+          # Stable names (the website links to releases/latest/download/DynamicIsland.dmg)
+          cp "Dynamic Island.dmg" DynamicIsland.dmg
+          cp "Dynamic Island.zip" DynamicIsland.zip
+          # Versioned copies
+          mv "Dynamic Island.dmg" "DynamicIsland-${{ steps.v.outputs.version }}.dmg"
+          mv "Dynamic Island.zip" "DynamicIsland-${{ steps.v.outputs.version }}.zip"
+
+      - name: Release notes from CHANGELOG
+        run: |
+          awk -v v="## ${{ steps.v.outputs.version }}" '
+            $0 == v {on=1; next}
+            /^## / && on {exit}
+            on {print}
+          ' CHANGELOG.md > notes.md
+          [ -s notes.md ] || echo "See CHANGELOG.md" > notes.md
+
+      - name: Publish GitHub release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v${{ steps.v.outputs.version }}
+          name: Dynamic Island ${{ steps.v.outputs.version }}
+          files: |
+            DynamicIsland.dmg
+            DynamicIsland.zip
+            DynamicIsland-${{ steps.v.outputs.version }}.dmg
+            DynamicIsland-${{ steps.v.outputs.version }}.zip
+          body_path: notes.md
+          append_body: false
+
+      - name: Add install instructions
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v${{ steps.v.outputs.version }}
+          append_body: true
+          body: |
+
+            ---
+            ## Install
+            1. Download **DynamicIsland.dmg** below and open it.
+            2. Drag **Dynamic Island** into **Applications**.
+            3. First launch only: **right-click the app ▸ Open ▸ Open** (the app isn't notarized by Apple).
+               On macOS 15+, if there's no Open button: System Settings ▸ Privacy & Security ▸ **Open Anyway**.
+
+            Works on Apple silicon and Intel Macs running macOS 14 Sonoma or later.
+            Full guide: [README](https://github.com/${{ github.repository }}#readme)
