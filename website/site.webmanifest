@@ -1,0 +1,11 @@
+{
+  "name": "Dynamic Island for Mac",
+  "short_name": "Dynamic Island",
+  "icons": [
+    { "src": "/assets/icon.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "/assets/apple-touch-icon.png", "sizes": "180x180", "type": "image/png" }
+  ],
+  "theme_color": "#070d1c",
+  "background_color": "#070d1c",
+  "display": "browser"
+}

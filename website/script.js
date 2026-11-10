@@ -15,18 +15,41 @@ const REPO_URL = `https://github.com/${GITHUB_REPO}`;
 const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 /* ---------- Links & version ---------- */
-document.querySelectorAll("[data-download]").forEach((a) => {
+/* ---------- Analytics (Google Tag Manager dataLayer) ----------
+   Events you can use as GTM "Custom Event" triggers:
+     file_download   – a Download button was clicked
+     generate_lead   – the contact form was sent successfully
+     outbound_click  – GitHub / release-notes links                       */
+window.dataLayer = window.dataLayer || [];
+let currentVersion = FALLBACK_VERSION;
+function track(event, params) {
+  try { window.dataLayer.push({ event, ...params }); } catch (_) {}
+}
+
+document.querySelectorAll("[data-download]").forEach((a, i) => {
   a.href = DOWNLOAD_URL;
+  const where = a.closest("section")?.id || a.closest("section")?.className || "page";
   a.addEventListener("click", () => {
+    track("file_download", {
+      file_name: "DynamicIsland.dmg",
+      file_extension: "dmg",
+      link_url: DOWNLOAD_URL,
+      link_text: a.textContent.trim().replace(/\s+/g, " "),
+      download_location: where === "hero" ? "hero" : where,
+      app_version: currentVersion,
+    });
     // Show the first-launch steps right after the download starts.
     setTimeout(() => document.getElementById("download")?.scrollIntoView({ behavior: "smooth" }), 400);
   });
 });
+document.querySelectorAll("[data-source], [data-release-notes]").forEach((a) =>
+  a.addEventListener("click", () => track("outbound_click", { link_url: a.href, link_text: a.textContent.trim() })));
 document.querySelectorAll("[data-source]").forEach((a) => (a.href = REPO_URL));
 document.querySelectorAll("[data-release-notes]").forEach((a) => (a.href = `${REPO_URL}/releases/latest`));
 document.getElementById("year").textContent = new Date().getFullYear();
 
 function setVersion(v) {
+  currentVersion = v;
   document.querySelectorAll("[data-version]").forEach((el) => (el.textContent = `v${v}`));
 }
 setVersion(FALLBACK_VERSION);
@@ -181,6 +204,7 @@ form.addEventListener("submit", async (e) => {
     });
     const out = await res.json().catch(() => ({}));
     if (!res.ok || !out.ok) throw new Error(out.error || "Something went wrong.");
+    track("generate_lead", { form_name: "contact", form_topic: data.topic || "Other" });
     form.reset();
     form.classList.add("done");
     statusEl.classList.add("ok");
